@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 function App() {
   
   return (
@@ -8,6 +10,7 @@ function App() {
       <UserComponent/>
       <ProfileComponent/>
       <FeedComponent/>
+      <ParentComponent/>
     </>
   )
 }
@@ -20,6 +23,23 @@ function ProfileComponent(){
 }
 function FeedComponent(){
   return <h1>Feed Component</h1>
+}
+
+function ParentComponent() {
+		const [name, setName] = useState('John')
+	
+		return <ChildComponent name={name} setName={setName}/>
+	}
+
+function ChildComponent(props) {
+  return (
+    <>
+      <h1>Hello {props.name}</h1>
+      <button onClick={() => props.setName('Mark')}>
+        Change Name
+      </button>
+    </>
+  )
 }
 
 export default App
